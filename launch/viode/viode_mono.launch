@@ -1,0 +1,7 @@
+<launch>
+    <node name="vins_estimator" pkg="dynaVINS" type="vins_node" output="screen"
+        args="/home/seungwon/catkin/src/dynavins/config/viode/calibration_mono.yaml">
+    </node>
+
+
+</launch>

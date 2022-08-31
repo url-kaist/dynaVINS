@@ -8,7 +8,8 @@
 <p align="center"><img src=readme_resource/city_main.gif alt="animated" width="30%"/>  <img src=readme_resource/parking_main.gif alt="animated" width="30%"/></p>
 
 * Please refer our [paper][arXivlink] for detailed explanantions and experimental results\!
-    * Validated on [VIODE dataset][VIODElink] dataset\.
+    * The BA module validated on [VIODE dataset][VIODElink] dataset\.
+    * The loop closure module validated on [Our dataset][ourdatalink]\.
     * Algorithm is based on [VINS\-Fusion][vinsfusionlink]\.
 * Youtube video for the detailed explanation and the demo video.
 
@@ -16,6 +17,7 @@
 
 [arXivlink]: https://arxiv.org/abs/2208.11500
 [VIODElink]: https://github.com/kminoda/VIODE
+[ourdatalink]: http://gofile.me/4355j/tsjdofd6S
 [vinsfusionlink]: https://github.com/HKUST-Aerial-Robotics/VINS-Fusion
 
 ## :heavy_plus_sign: Additional package : VINS-Fusion-SC (SwitchableConstraints)
@@ -43,11 +45,57 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 ## :gear: Parameters
 
-> Parameters of DynaVINS. You can find the results of each parameters on [wiki page][wikilink]
+> Parameters of DynaVINS. You can find the results of each parameters on the [wiki page (param)][wikilink1]
 
-TODO
+> Time comparison according to various parameters can be found on the [wiki page (time)][wikilink2].
 
-[wikilink]: https://github.com/url-kaist/dynaVINS/wiki/About-Parameters
++ regularization_lambda
+
+    The Lambda value of regularization term in paper. (Section. III-C)
+
++ momentum_on
+
+    Using the momentum factor or not (true/false)
+
++ momentum_lambda
+
+    The Lambda value of momentum term in paper. (Section. III-D)
+
++ alternating_converge
+
+    The threshold for checking the convergence of the alternating optimization.\
+    90% is usually enough. If you want faster speed, trying to reduce it.\
+    Time comparison can be found on the wiki page.
+
++ margin_feature_thresh
+
+    Features which have less weight than this value are not used in marginalization.\
+    This may affect accuracy, but is effective at reducing time costs.\
+    You can try uncomment line 848 of "vins_estimator/estimator/estimator.cpp" to disable these features also in optimization.
+
+    ```c++
+    //ADDITIONAL FEATURE : NO USE IN OPT.
+    //if(it_per_id.weight<DYN_FEAT_MARGIN_THRESH) continue;
+    ```
+
++ hypodiff_dist
+
+    The distance threshold for grouping constraints into hypothesis. (Section. IV-B)
+
++ hypodiff_yaw
+
+     The angle threshold for grouping constraints into hypothesis. (Section. IV-B)
+
++ hypo_regularization
+
+    The Lambda value of regularization term in loop closure module. (Section. IV-C)
+
++ hypo_alternating_converge
+
+    The threshold for checking the convergence of the alternating optimization in loop closure module.
+
+[wikilink1]: https://github.com/url-kaist/dynaVINS/wiki/About-Parameters
+[wikilink2]: https://github.com/url-kaist/dynaVINS/wiki/Time-cost-comparison
 
 ## :building_construction: How to build
 
@@ -69,25 +117,31 @@ $ source ~/catkin_ws/devel/setup.bash
 
 
 ### VIODE dataset (Only BA) examples
-### 1. **Parking lot sequence with monocular camera + IMU**
+#### 1. **VIODE sequence with monocular camera + IMU**
 
 ``` bash
-# TODO
-$ roslaunch dynavins blabla
+$ roslaunch dynaVINS viode_mono.launch
+$ rosbag play 0_none.bag (or 1_low.bag, ...)
 ```
 
-### 2. **Parking lot sequence with stereo camera + IMU**
+#### 2. **VIODE sequence with stereo camera + IMU**
 
 ``` bash
-# TODO
-$ roslaunch dynavins blabla
+$ roslaunch dynaVINS viode_stereo.launch
+$ rosbag play 0_none.bag (or 1_low.bag, ...)
 ```
 
 ### Our dataset (with Loop Closure module) examples
+> You can use your own intel realsense d455! (calibration required)
 
 ``` bash
-# TODO
-$ roslaunch dynavins blabla
+$ roslaunch dynaVINS d455_mono.launch
+$ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
+```
+
+``` bash
+$ roslaunch dynaVINS d455_stereo.launch
+$ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 ```
 
 ## :bookmark: Citation

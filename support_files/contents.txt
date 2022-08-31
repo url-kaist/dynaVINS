@@ -1,0 +1,3 @@
+Due to the file size, you can download the contents of the support_files folder in VINS-Fusion repository.
+(https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files)
+Download brief_k10L6.bin and brief_pattern.yml files into support_files folder.

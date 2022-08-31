@@ -42,6 +42,12 @@ ROS Kinetic or Melodic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 ### 2. **Ceres Solver**
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
+### 3. **Support file from VINS-Fusion**
+Due to the file size, you can download the contents of the support_files folder in [VINS-Fusion repository](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files).\
+Download **brief_k10L6.bin** and **brief_pattern.yml** files into support_files folder.
+
+
+
 
 ## :gear: Parameters
 

@@ -3,7 +3,7 @@
 ## :bookmark_tabs: About DynaVINS (IEEE RA-L'22)
 
 * A robust **visual-inertial state estimator algorithm** for dynamic environments.
-* The robust bundle adjustment is used for dynamic objects such as cars :car:, humans :man-running:, buses :bus:, etc.
+* The robust bundle adjustment is used for dynamic objects such as cars :car:, humans :runner:, buses :bus:, etc.
 
 <p align="center"><img src=readme_resource/city_main.gif alt="animated" width="30%"/>  <img src=readme_resource/parking_main.gif alt="animated" width="30%"/></p>
 

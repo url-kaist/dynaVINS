@@ -131,7 +131,7 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 
 + `regularization_lambda`
 
-    The Lambda value of regularization term in paper. (Section. III-C)
+    The Lambda value of regularization term in paper. (Section III-C)
 
 + `momentum_on`
 
@@ -139,7 +139,7 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 
 + `momentum_lambda`
 
-    The Lambda value of momentum term in paper. (Section. III-D)
+    The Lambda value of momentum term in paper. (Section III-D)
 
 + `alternating_converge`
 
@@ -151,7 +151,7 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 
     Features which have less weight than this value are not used in marginalization.\
     This may affect accuracy, but is effective at reducing time costs.\
-    You can try uncomment line 848 of "vins_estimator/estimator/estimator.cpp" to disable these features also in optimization.
+    You can try uncomment line 848 of "vins_estimator/estimator/estimator.cpp" to enable these features also in optimization.
 
     ```c++
     //ADDITIONAL FEATURE : NO USE IN OPT.

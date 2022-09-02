@@ -1,7 +1,8 @@
 <launch>
     <node name="vins_estimator" pkg="dynaVINS" type="vins_node" output="screen"
-        args="/home/seungwon/catkin/src/dynavins/config/viode/calibration_mono.yaml">
+        args="$(find dynaVINS)/config/viode/calibration_mono.yaml">
     </node>
-
+    
+    <node name="rviz_dynaVINS" pkg="rviz" type="rviz" args="-d $(find dynaVINS)/config/vins_rviz_config.rviz"/>
 
 </launch>

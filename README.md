@@ -1,4 +1,4 @@
-# DynaVINS : A Visual-Inertial SLAM for Dynamic Environments
+# DynaVINS: A Visual-Inertial SLAM for Dynamic Environments
 
 ## :bookmark_tabs: About DynaVINS (IEEE RA-L'22)
 
@@ -58,13 +58,13 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 Due to the limiting file size of Github, we need **one** package and **two** files from the [VINS-Fusion repository](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files).
 
-1. Set the `camera_models` package, which is included in VINS-Fusion, in your workspace.
+1. Set the `camera_models` package in your workspace, which is included in VINS-Fusion.
 2. Copy `support_files/brief_k10L6.bin` in VINS-Fusion into our `support_files` folder 
 3. Copy `support_files/brief_pattern.yml` in VINS-Fusion into our `support_files` folder
 
 ## :building_construction: How to build
 
-> Please follow below codes to build DynaVINS (on ROS).
+> Please follow the below commands to build DynaVINS (on ROS).
 
 ``` bash
 $ cd ~/catkin_ws/src 
@@ -78,9 +78,16 @@ $ source ~/catkin_ws/devel/setup.bash
 ## :runner: To run the demo codes
 
 ### VIODE dataset (Only BA) examples
-#### 1. **VIODE sequence with monocular camera + IMU**
 
-(Note that the larger the number of bag file in VIODE is, the more dynamic objects exist.)
+For convenience, we also provide `3_high.bag` file in the `parking_lot` scene. You can download the file by the following command:
+
+```bash
+$ wget https://urserver.kaist.ac.kr/publicdata/dynaVINS/VIODE_dataset/parking_lot/3_high.bag
+```
+
+Note that the larger the number of bag files in the VIODE dataset is, the more dynamic objects exist.
+
+#### 1. **VIODE sequence with monocular camera + IMU**
 
 ``` bash
 $ roslaunch dynaVINS viode_mono.launch
@@ -96,7 +103,13 @@ $ rosbag play 3_high.bag (or 0_none.bag, 1_low.bag, ...)
 
 
 ### Our dataset (with Loop Closure module) examples
-> You can use your own intel realsense d455! (calibration required)
+> You can use your own intel realsense d455! (calibration is required)
+
+You can easily download our bag file by the following command:
+
+```bash
+$ wget https://urserver.kaist.ac.kr/publicdata/dynaVINS/d455_urban_robotics/e_shape.bag
+```
 
 ``` bash
 $ roslaunch dynaVINS d455_mono.launch
@@ -112,7 +125,7 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 
 ## :gear: Parameters
 
-> Parameters of DynaVINS. You can find the results of each parameters on the [wiki page (param)][wikilink1]
+> Parameters of DynaVINS. You can find the results of each parameter on the [wiki page (param)][wikilink1]
 
 > Time comparison according to various parameters can be found on the [wiki page (time)][wikilink2].
 
@@ -131,7 +144,7 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 + `alternating_converge`
 
     The threshold for checking the convergence of the alternating optimization.\
-    90% is usually enough. If you want faster speed, trying to reduce it.\
+    90% is usually enough. If you want faster speed, please try to reduce it.\
     Time comparison can be found on the wiki page.
 
 + `margin_feature_thresh`
@@ -147,19 +160,19 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 
 + `hypodiff_dist`
 
-    The distance threshold for grouping constraints into hypothesis. (Section. IV-B)
+    The distance threshold for grouping constraints into the hypothesis. (Section IV-B)
 
 + `hypodiff_yaw`
 
-     The angle threshold for grouping constraints into hypothesis. (Section. IV-B)
+     The angle threshold for grouping constraints into the hypothesis. (Section IV-B)
 
 + `hypo_regularization`
 
-    The Lambda value of regularization term in loop closure module. (Section. IV-C)
+    The Lambda value of regularization term in loop closure module. (Section IV-C)
 
 + `hypo_alternating_converge`
 
-    The threshold for checking the convergence of the alternating optimization in loop closure module.
+    The threshold for checking the convergence of the alternating optimization in the loop closure module.
 
 [wikilink1]: https://github.com/url-kaist/dynaVINS/wiki/About-Parameters
 [wikilink2]: https://github.com/url-kaist/dynaVINS/wiki/Time-cost-comparison
@@ -180,8 +193,10 @@ If you use our codes\, please cite our paper \([arXiv][arXivLink]\)
 
 ## :mailbox: Contact Information
 
-If you have any questions, please do not hesitate to contact us
+If you have any questions, please do not hesitate to contact us:
 
-*[Seungwon Song][swlink] :envelope: `sswan55 at kaist.ac.kr`
+* [Seungwon Song][swlink] :envelope: `sswan55 at kaist.ac.kr`
+* [Hyungta Lim][htlink] :envelope: `shapelim at kaist.ac.kr`
 
 [swlink]: [https://github.com/sswan940505](https://github.com/sswan940505)
+[htlink]: [https://github.com/LimHyungTae](https://github.com/LimHyungTae)

@@ -1,10 +1,10 @@
 <launch>
     <node name="vins_estimator" pkg="dynaVINS" type="vins_node"
-        args="/home/seungwon/catkin/src/dynavins/config/realsense_d455/realsense_stereo_imu_config_stereo.yaml">
+        args="$(find dynaVINS)/config/realsense_d455/realsense_stereo_imu_config_stereo.yaml">
     </node>
 
     <node name="loop_fusion" pkg="dynaVINS" type="loop_fusion_node" output="screen"
-        args="/home/seungwon/catkin/src/dynavins/config/realsense_d455/realsense_stereo_imu_config_stereo.yaml">
+        args="$(find dynaVINS)/config/realsense_d455/realsense_stereo_imu_config_stereo.yaml">
     </node>
 
 

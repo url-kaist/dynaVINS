@@ -31,8 +31,22 @@
 [switchgitlink]: https://github.com/sswan940505/switchable\_constraints
 [vfsclink]:https://github.com/url-kaist/VinsFusionSC
 
+--- 
+
+## Test Env.
+
+This code is tested on
+
+* Linux 18.04 LTS
+* ROS Melodic
+* Ceres Solver 1.14.0
+* OpenCV 3.4.1
+
+---
+
 ## :package: Prerequisites
-Prerequisites for DynaVINS are as same as for VINS-Fusion!
+
+The dependency of DynaVINS is equal to that of VINS-Fusion.
 
 ### 1. **Ubuntu** and **ROS**
 Ubuntu 64-bit 16.04 or 18.04.
@@ -43,65 +57,12 @@ ROS Kinetic or Melodic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 ### 3. **Support file from VINS-Fusion**
-Due to the file size, you can download the contents of the support_files folder in [VINS-Fusion repository](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files).\
-Download **brief_k10L6.bin** and **brief_pattern.yml** files into support_files folder.
 
+Due to the limiting file size of Github, you should copy **three** files from the [VINS-Fusion repository](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files).
 
-
-
-## :gear: Parameters
-
-> Parameters of DynaVINS. You can find the results of each parameters on the [wiki page (param)][wikilink1]
-
-> Time comparison according to various parameters can be found on the [wiki page (time)][wikilink2].
-
-+ regularization_lambda
-
-    The Lambda value of regularization term in paper. (Section. III-C)
-
-+ momentum_on
-
-    Using the momentum factor or not (true/false)
-
-+ momentum_lambda
-
-    The Lambda value of momentum term in paper. (Section. III-D)
-
-+ alternating_converge
-
-    The threshold for checking the convergence of the alternating optimization.\
-    90% is usually enough. If you want faster speed, trying to reduce it.\
-    Time comparison can be found on the wiki page.
-
-+ margin_feature_thresh
-
-    Features which have less weight than this value are not used in marginalization.\
-    This may affect accuracy, but is effective at reducing time costs.\
-    You can try uncomment line 848 of "vins_estimator/estimator/estimator.cpp" to disable these features also in optimization.
-
-    ```c++
-    //ADDITIONAL FEATURE : NO USE IN OPT.
-    //if(it_per_id.weight<DYN_FEAT_MARGIN_THRESH) continue;
-    ```
-
-+ hypodiff_dist
-
-    The distance threshold for grouping constraints into hypothesis. (Section. IV-B)
-
-+ hypodiff_yaw
-
-     The angle threshold for grouping constraints into hypothesis. (Section. IV-B)
-
-+ hypo_regularization
-
-    The Lambda value of regularization term in loop closure module. (Section. IV-C)
-
-+ hypo_alternating_converge
-
-    The threshold for checking the convergence of the alternating optimization in loop closure module.
-
-[wikilink1]: https://github.com/url-kaist/dynaVINS/wiki/About-Parameters
-[wikilink2]: https://github.com/url-kaist/dynaVINS/wiki/Time-cost-comparison
+1. Set the `camera_models` package, which is included in VINS-Fusion, in your workspace.
+2. Copy `support_files/brief_k10L6.bin` in VINS-Fusion into our `support_files` folder 
+3. Copy `support_files/brief_pattern.yml` in VINS-Fusion into our `support_files` folder
 
 ## :building_construction: How to build
 
@@ -116,11 +77,7 @@ $ catkin_make
 $ source ~/catkin_ws/devel/setup.bash
 ```
 
-
 ## :runner: To run the demo codes
-
-
-
 
 ### VIODE dataset (Only BA) examples
 #### 1. **VIODE sequence with monocular camera + IMU**
@@ -149,6 +106,63 @@ $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 $ roslaunch dynaVINS d455_stereo.launch
 $ rosbag play e_shape.bag (or loop_tempstatic.bag, ...)
 ```
+
+---
+
+## :gear: Parameters
+
+> Parameters of DynaVINS. You can find the results of each parameters on the [wiki page (param)][wikilink1]
+
+> Time comparison according to various parameters can be found on the [wiki page (time)][wikilink2].
+
++ `regularization_lambda`
+
+    The Lambda value of regularization term in paper. (Section. III-C)
+
++ `momentum_on`
+
+    Using the momentum factor or not (true/false)
+
++ `momentum_lambda`
+
+    The Lambda value of momentum term in paper. (Section. III-D)
+
++ `alternating_converge`
+
+    The threshold for checking the convergence of the alternating optimization.\
+    90% is usually enough. If you want faster speed, trying to reduce it.\
+    Time comparison can be found on the wiki page.
+
++ `margin_feature_thresh`
+
+    Features which have less weight than this value are not used in marginalization.\
+    This may affect accuracy, but is effective at reducing time costs.\
+    You can try uncomment line 848 of "vins_estimator/estimator/estimator.cpp" to disable these features also in optimization.
+
+    ```c++
+    //ADDITIONAL FEATURE : NO USE IN OPT.
+    //if(it_per_id.weight<DYN_FEAT_MARGIN_THRESH) continue;
+    ```
+
++ `hypodiff_dist`
+
+    The distance threshold for grouping constraints into hypothesis. (Section. IV-B)
+
++ `hypodiff_yaw`
+
+     The angle threshold for grouping constraints into hypothesis. (Section. IV-B)
+
++ `hypo_regularization`
+
+    The Lambda value of regularization term in loop closure module. (Section. IV-C)
+
++ `hypo_alternating_converge`
+
+    The threshold for checking the convergence of the alternating optimization in loop closure module.
+
+[wikilink1]: https://github.com/url-kaist/dynaVINS/wiki/About-Parameters
+[wikilink2]: https://github.com/url-kaist/dynaVINS/wiki/Time-cost-comparison
+
 
 ## :bookmark: Citation
 

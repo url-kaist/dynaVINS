@@ -42,8 +42,6 @@ This code is tested on
 * Ceres Solver 1.14.0
 * OpenCV 3.4.1
 
----
-
 ## :package: Prerequisites
 
 The dependency of DynaVINS is equal to that of VINS-Fusion.
@@ -58,7 +56,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 ### 3. **Support file from VINS-Fusion**
 
-Due to the limiting file size of Github, you should copy **three** files from the [VINS-Fusion repository](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files).
+Due to the limiting file size of Github, we need **one** package and **two** files from the [VINS-Fusion repository](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/tree/master/support_files).
 
 1. Set the `camera_models` package, which is included in VINS-Fusion, in your workspace.
 2. Copy `support_files/brief_k10L6.bin` in VINS-Fusion into our `support_files` folder 
@@ -82,17 +80,20 @@ $ source ~/catkin_ws/devel/setup.bash
 ### VIODE dataset (Only BA) examples
 #### 1. **VIODE sequence with monocular camera + IMU**
 
+(Note that the larger the number of bag file in VIODE is, the more dynamic objects exist.)
+
 ``` bash
 $ roslaunch dynaVINS viode_mono.launch
-$ rosbag play 0_none.bag (or 1_low.bag, ...)
+$ rosbag play 3_high.bag (or 0_none.bag, 1_low.bag, ...)
 ```
 
 #### 2. **VIODE sequence with stereo camera + IMU**
 
 ``` bash
 $ roslaunch dynaVINS viode_stereo.launch
-$ rosbag play 0_none.bag (or 1_low.bag, ...)
+$ rosbag play 3_high.bag (or 0_none.bag, 1_low.bag, ...)
 ```
+
 
 ### Our dataset (with Loop Closure module) examples
 > You can use your own intel realsense d455! (calibration required)

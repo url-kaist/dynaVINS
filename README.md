@@ -197,5 +197,6 @@ If you have any questions, please do not hesitate to contact us:
 
 * [Seungwon Song][swlink] :envelope: `sswan55 at kaist.ac.kr`
 * [Hyungtae Lim][htlink] :envelope: `shapelim at kaist.ac.kr`
+
 [swlink]: [https://github.com/sswan940505](https://github.com/sswan940505)
 [htlink]: [https://github.com/LimHyungTae](https://github.com/LimHyungTae)

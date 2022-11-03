@@ -84,6 +84,7 @@ For convenience, we also provide `3_high.bag` file in the `parking_lot` scene. Y
 ```bash
 $ wget https://urserver.kaist.ac.kr/publicdata/dynaVINS/VIODE_dataset/parking_lot/3_high.bag
 ```
+* Since it is blocked by network provider, download the dataset from : http://gofile.me/4355j/XIv6xyQ2i
 
 Note that the larger the number of bag files in the VIODE dataset is, the more dynamic objects exist.
 
@@ -110,6 +111,7 @@ You can easily download our bag file by the following command:
 ```bash
 $ wget https://urserver.kaist.ac.kr/publicdata/dynaVINS/d455_urban_robotics/e_shape.bag
 ```
+* Since it is blocked by network provider, download the dataset from : http://gofile.me/4355j/XIv6xyQ2i
 
 ``` bash
 $ roslaunch dynaVINS d455_mono.launch
